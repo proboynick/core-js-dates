@@ -139,9 +139,8 @@ function isDateInPeriod(date, period) {
  * '1999-01-05T02:20:00.000Z' => '1/5/1999, 2:20:00 AM'
  * '2010-12-15T22:59:00.000Z' => '12/15/2010, 10:59:00 PM'
  */
-function formatDate(/* date */) {
-  // return new Date(date).toLocaleString('en-US', { timeZone: 'UTC' });
-  throw new Error('Not implemented');
+function formatDate(date) {
+  return new Date(date).toLocaleString('en-US', { timeZone: 'UTC' });
 }
 
 /**
@@ -253,28 +252,28 @@ function getQuarter(date) {
  * { start: '01-01-2024', end: '15-01-2024' }, 1, 3 => ['01-01-2024', '05-01-2024', '09-01-2024', '13-01-2024']
  * { start: '01-01-2024', end: '10-01-2024' }, 1, 1 => ['01-01-2024', '03-01-2024', '05-01-2024', '07-01-2024', '09-01-2024']
  */
-//  countWorkDays, countOffDays
-function getWorkSchedule(period, countWorkDays, countOffDays) {
-  const startDate = new Date(period.start.split('-').reverse().join('-'));
-  const endDate = new Date(period.end.split('-').reverse().join('-'));
-  let day = startDate.getDate();
-  const startMonth = startDate.getMonth();
-  const startYear = startDate.getFullYear();
-  let currentDate = new Date(startYear, startMonth, day);
-  const shedule = [];
-  while (currentDate < endDate) {
-    for (let i = 0; i < countWorkDays; i += 1) {
-      currentDate = new Date(startYear, startMonth, day);
-      if (currentDate < endDate) {
-        shedule.push(
-          currentDate.toLocaleDateString('ru-RU').split('.').join('-')
-        );
-      }
-      day += 1;
-    }
-    day += countOffDays;
-  }
-  return shedule;
+function getWorkSchedule(/* period, countWorkDays, countOffDays */) {
+  // const startDate = new Date(period.start.split('-').reverse().join('-'));
+  // const endDate = new Date(period.end.split('-').reverse().join('-'));
+  // let day = startDate.getDate();
+  // const startMonth = startDate.getMonth();
+  // const startYear = startDate.getFullYear();
+  // let currentDate = new Date(startYear, startMonth, day);
+  // const shedule = [];
+  // while (currentDate < endDate) {
+  //   for (let i = 0; i < countWorkDays; i += 1) {
+  //     currentDate = new Date(startYear, startMonth, day);
+  //     if (currentDate < endDate) {
+  //       shedule.push(
+  //         currentDate.toLocaleDateString('ru-RU').split('.').join('-')
+  //       );
+  //     }
+  //     day += 1;
+  //   }
+  //   day += countOffDays;
+  // }
+  // return shedule;
+  throw new Error('Not implemented');
 }
 
 /**
